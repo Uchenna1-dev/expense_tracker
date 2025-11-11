@@ -1,1 +1,38 @@
-[{"Groceries": [{"cost": 12.09, "Date": "11/2/56", "description": "lover"}]}, {"Transport": []}, {"Bills": []}]
+[
+    {
+        "xxx": [
+            {
+                "cost": 22.0,
+                "date": "222",
+                "description": "xx"
+            }
+        ]
+    },
+    {
+        "ss": [
+            {
+                "cost": 11.0,
+                "date": "11",
+                "description": "xsax"
+            }
+        ]
+    },
+    {
+        "xqsxqw": [
+            {
+                "cost": 233.0,
+                "date": "ca",
+                "description": "xa"
+            }
+        ]
+    },
+    {
+        "scd": [
+            {
+                "cost": 2.0,
+                "date": "ddx",
+                "description": "sssssss"
+            }
+        ]
+    }
+]
