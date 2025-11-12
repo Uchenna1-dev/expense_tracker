@@ -1,6 +1,8 @@
 import json
 
 expenses = []
+#create a category list and check to see if user input is in the list, if not then put in Other category.
+category = ["Groceries", "Bills", "Transport","Rent", "Other"]
 
 # start with a welcome text 
 def main():
@@ -13,7 +15,6 @@ def main():
 
         except FileNotFoundError:
             expenses = []
-
 
         print("===================================")
         print("   Welcome to your Expense Tracker  ")
@@ -30,7 +31,6 @@ def main():
             
             print(expenses)
     
-
         if choice == 2:
             #view expenses
             pass
@@ -39,8 +39,6 @@ def main():
             break
             
             
-
-
 def add_expense():
     global expenses
     #user to input expense
@@ -52,12 +50,16 @@ def add_expense():
 
     for item in expenses:
         for category, expense in item.items():
-            if group.lower() == category.lower():
-                expense.append({"cost": cost, "date": date, "description": short_description})
+            if group.title() in category:
+                expense.append({group: [{"cost": cost, "date": date, "description": short_description}]})
                 match = True
 
     if match == False:
-        expenses.append({group: [{"cost": cost, "date": date, "description": short_description}]})
+        if group.title() not in category:
+            group = "Other"
+            expenses.append({group: [{"cost": cost, "date": date, "description": short_description}]})
+
+
 
  #expense saved to memory 
     with open("expenses.json","w") as file:
