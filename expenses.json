@@ -1,37 +1,24 @@
 [
     {
-        "xxx": [
+        "Groceries": [
             {
-                "cost": 22.0,
-                "date": "222",
-                "description": "xx"
+                "cost": 2.99,
+                "date": "11/12/25",
+                "description": "bread"
+            },
+            {
+                "cost": 2.99,
+                "date": "13/12/25",
+                "description": "Bread again"
             }
         ]
     },
     {
-        "ss": [
+        "Bills": [
             {
-                "cost": 11.0,
-                "date": "11",
-                "description": "xsax"
-            }
-        ]
-    },
-    {
-        "xqsxqw": [
-            {
-                "cost": 233.0,
-                "date": "ca",
-                "description": "xa"
-            }
-        ]
-    },
-    {
-        "scd": [
-            {
-                "cost": 2.0,
-                "date": "ddx",
-                "description": "sssssss"
+                "cost": 100.0,
+                "date": "12/12/25",
+                "description": "electricity"
             }
         ]
     }
