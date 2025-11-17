@@ -1,21 +1,22 @@
 import json
 
 expenses = []
+#reload expenses file each time program runs, code defensively using try and except
+try:
+    with open("expenses.json", "r") as file:
+        expenses = json.load(file)
+
+except FileNotFoundError:
+    expenses = []
+
 #create a category list and check to see if user input is in the list, if not then put in Other category.
 acceptable_categories = ["Groceries", "Bills", "Transport","Rent", "Other"]
 
 # start with a welcome text 
 def main():
-    global expenses
+    
     while True:
-        #reload expenses file each time program runs, code defensively using try and except
-        try:
-            with open("expenses.json", "r") as file:
-                expenses = json.load(file)
-
-        except FileNotFoundError:
-            expenses = []
-
+        
         print("===================================")
         print("   Welcome to your Expense Tracker  ")
         print("===================================")
@@ -26,19 +27,18 @@ def main():
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
-            add_expense()
+            expenses = add_expense(expenses, acceptable_categories)
              #print back to confirm expense added
             
     
         elif choice == 2:
-            view_expenses()
+            expenses = view_expenses(expenses, acceptable_categories)
             
         elif choice == 3:
             break
             
             
-def add_expense():
-    global expenses
+def add_expense(expenses, acceptable_categories):
 
     group = input("Category of expense: ").title()
     cost = float(input("Expense: "))
@@ -48,21 +48,20 @@ def add_expense():
     # STEP 1 — Check if category is allowed
     if group not in acceptable_categories:
         group = "Other"
-
+    
+    category_found = False
     # STEP 2 — Try to add expense to an existing category in JSON
     for item in expenses:
-        for key, value in item.items():
-            if key == group:
-                value.append({
-                    "cost": cost,
-                    "date": date,
-                    "description": short_description
-                })
-                break
-        else:
-            continue
-        break
-    else:
+        if group in item:
+            item[group].append({
+                "cost": cost,
+                "date": date,
+                "description": short_description
+            })
+            category_found = True
+            break
+        
+    if category_found == False:
         # STEP 3 — Category not found → create it
         expenses.append({
             group: [{
@@ -78,10 +77,9 @@ def add_expense():
 
     print("Added")
 
-#should have a continue or go back to the main menu option
-    return
+    return expenses
 
-def view_expenses():
+def view_expenses(expenses, acceptable_categories):
 
     print("Please choose an option: \n1. View all expenses \n2. View expenses by categories \n3. View total spending")
 
@@ -102,8 +100,7 @@ def view_expenses():
                         print ("on", end=' ')
                         print(expense["date"], end= ' ')
                         print(f"({expense['description']})")
-
-        return
+        return expenses
 
 #view expense by categories
     elif option == 2:
@@ -135,10 +132,10 @@ def view_expenses():
                         print ("on", end=' ')
                         print(expense["date"], end= ' ')
                         print(f"({expense['description']})")
+        
+        return expenses
 
-        return
 #View total spending
-
     elif option == 3:
         total = 0
 
@@ -153,7 +150,7 @@ def view_expenses():
                 
         print(f"Total spending: £{total:.2f}")
     
-             
+        return expenses        
     
 if __name__ == "__main__":
     main()
