@@ -76,10 +76,6 @@ def add_expense():
     with open("expenses.json", "w") as file:
         json.dump(expenses, file, indent=4)
 
- #expense saved to memory 
-    with open("expenses.json","w") as file:
-        json.dump(expenses, file, indent = 4)
-
     print("Added")
 
 #should have a continue or go back to the main menu option
@@ -87,7 +83,7 @@ def add_expense():
 
 def view_expenses():
 
-    print("Please choose an option: \n1. View all expenses \n2. View expenses by categories \n3. View total spending \n4. Go back to main menu")
+    print("Please choose an option: \n1. View all expenses \n2. View expenses by categories \n3. View total spending")
 
     option = int(input("Option: "))
 
@@ -114,7 +110,6 @@ def view_expenses():
         if not expenses:
             print("No expenses found under this category")
             return
-        
 
         chosen_category = input("Which category would you like to see: ").title()
     
@@ -123,31 +118,42 @@ def view_expenses():
             print("Invalid category")
             chosen_category = input("Which category would you like to see: ").title()
 
-        else:
-            for item in expenses:
-                
-                for category, expense_list in item.items():
-
-                    if category == chosen_category:
-                        print(category)
-
-                        if not expense_list:
-                            print("This category has no expense list")
-                            return
-                        
-                        for expense in expense_list:
-                            print(expense["cost"], end= ' ')
-                            print ("on", end=' ')
-                            print(expense["date"], end= ' ')
-                            print(f"({expense['description']})")
-
-            
         
+        for item in expenses:
 
+            for category, expense_list in item.items():
+
+                if category == chosen_category:
+                    print(category)
+
+                    if not expense_list:
+                        print("This category has no expense list")
+                        return
+                        
+                    for expense in expense_list: # change this to a one liner later
+                        print(expense["cost"], end= ' ')
+                        print ("on", end=' ')
+                        print(expense["date"], end= ' ')
+                        print(f"({expense['description']})")
+
+        return
+#View total spending
+
+    elif option == 3:
+        total = 0
+
+        if not expenses:
+            print("No expenses found!")
+            return
+        
+        for item in expenses:
+            for category, expense_list in item.items():
+                for expense in expense_list:
+                    total += expense["cost"]
+                
+        print(f"Total spending: £{total:.2f}")
     
-
-
-    
+             
     
 if __name__ == "__main__":
     main()
