@@ -1,63 +1,89 @@
-# expense_tracker
+## Expense Tracker (Python)
 
-A simple Python command-line application that helps you keep track of your daily expenses.
-You can add new expenses, view your spending history, see your total, and save everything to a CSV file.
+A simple, beginner-friendly command-line application for tracking everyday spending.
+This project allows users to record expenses, view them by category, and calculate total spending.
+All expenses are saved to a JSON file so the data is kept between program runs.
 
 ## Features
+1. Add an Expense
 
-Add new expenses with description, category, and amount
+Enter the category, cost, date, and a short description.
 
-View all recorded expenses in a clear table
+Categories include: Groceries, Bills, Transport, Rent, and Other.
 
-Calculate your total spending
+If the user enters a category that is not recognised, the expense is automatically placed in “Other”.
 
-Save your data to a CSV file for future reference
+Expenses are stored in a JSON file to make them persistent.
 
-Lightweight, beginner-friendly, and runs entirely in the terminal
+2. View Expenses
+
+Users can choose from:
+
+View all expenses
+Displays every category and every recorded purchase.
+
+View expenses by category
+Shows expenses only in the selected category.
+
+View total spending
+Outputs the sum of all recorded expenses, formatted to two decimal places.
+
+3. Persistent Storage
+
+All expenses are saved to a JSON file (expenses.json).
+
+The program loads the file when it starts, allowing users to continue where they left off.
 
 ## How It Works
 
-When you run the script, you’ll see a menu with options to:
+The program uses:
 
-Add an expense
+A list of dictionaries to organise expenses.
 
-View all expenses
+A set of predefined accepted categories.
 
-View total spent
+A simple menu system that lets the user navigate between options.
 
-Save and exit
+A clean and readable structure, with separate functions for:
 
-Each expense is saved in a list, and all data is written to expenses.csv upon exit.
+- Adding expenses
 
-## Example Menu
-Welcome to your Expense Tracker!
-Please select an option:
-1. Add new expense
-2. View all expenses
-3. View total spent
-4. Save & Exit
+- Viewing expenses
 
-## Setup
+- Viewing totals
 
-Run the script using:
+- Saving and loading data
+
+## File Structure
+expense-tracker
+
+
+── expenses.json        
+  #Stores all saved expenses
+
+── expense_tracker.py   
+  #Main application code
+
+## How to Run
+
+Ensure you have Python installed.
+
+Clone or download this repository.
+
+Navigate into the folder and run the application:
 
 python tracker.py
 
-## Example Output
+Follow the on-screen menu.
 
-Description Category Amount (£)
-Groceries Food 25.50
-Uber Ride Transport 8.00
-Netflix Subscriptions 6.99
+## Future Improvements
 
-Total spent: £40.49
+This project can be expanded with features such as:
 
-## Requirements
+Editing or deleting expenses
 
-Python 3.x
+Filtering expenses by date
 
-No external libraries needed
+Exporting reports
 
-## Author
-
-Created by Uchenna1-dev
+Adding monthly or weekly summaries
