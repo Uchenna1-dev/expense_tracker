@@ -171,9 +171,7 @@ except FileNotFoundError:
 acceptable_categories = ["Groceries", "Bills", "Transport", "Rent", "Other"]
 
 
-# ===============================
 #           MAIN MENU
-# ===============================
 def main():
     while True:
         print("===================================")
@@ -199,9 +197,7 @@ def main():
             break
 
 
-# ===============================
 #        ADDING EXPENSES
-# ===============================
 def add_expense(expenses, acceptable_categories):
 
     # Collect expense details from the user
@@ -246,19 +242,17 @@ def add_expense(expenses, acceptable_categories):
 
     return expenses
 
-
-# ===============================
 #       VIEWING EXPENSES
-# ===============================
+
 def view_expenses(expenses, acceptable_categories):
 
     print("Please choose an option: \n1. View all expenses \n2. View expenses by categories \n3. View total spending")
 
     option = int(input("Option: "))
 
-    # ------------------------------------
+   
     # 1. VIEW ALL EXPENSES
-    # ------------------------------------
+  
     if option == 1:
 
         # If there are no expenses at all
@@ -280,9 +274,8 @@ def view_expenses(expenses, acceptable_categories):
 
         return expenses
 
-    # ------------------------------------
     # 2. VIEW EXPENSES BY CATEGORY
-    # ------------------------------------
+  
     elif option == 2:
 
         if not expenses:
@@ -320,9 +313,9 @@ def view_expenses(expenses, acceptable_categories):
 
         return expenses
 
-    # ------------------------------------
+ 
     # 3. VIEW TOTAL SPENDING
-    # ------------------------------------
+   
     elif option == 3:
         total = 0
 
@@ -342,9 +335,8 @@ def view_expenses(expenses, acceptable_categories):
         return expenses
 
 
-# ===============================
 #            RUN APP
-# ===============================
+
 if __name__ == "__main__":
     main()
 
